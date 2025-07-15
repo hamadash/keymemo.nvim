@@ -1,3 +1,5 @@
+<a href="https://github.com/hamadash/operator-hint.nvim/releases/latest"><img src="https://img.shields.io/github/release/hamadash/operator-hint.nvim.svg" /></a>
+
 # operator-hint.nvim
 
 A Neovim plugin that provides which-key style hints for Vim operators to help you remember useful operations.
