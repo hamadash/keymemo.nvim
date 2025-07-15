@@ -7,8 +7,6 @@ A Neovim plugin that provides memo for Vim keys to help you remember useful keys
 ## Features
 
 - ⚙️ **Configurable**: Customize keys and their descriptions
-- 🎯 **LazyNvim compatible**: Works seamlessly with LazyNvim
-- ⏱️ **Smart timing**: Configurable delays and timeouts
 - 🎨 **Clean UI**: Floating window with customizable appearance
 
 ## Installation
