@@ -1,6 +1,6 @@
 local M = {}
 
-local config = require('operator-hint.config')
+local config = require('keymemo.config')
 
 local popup_win = nil
 local popup_buf = nil
@@ -86,7 +86,7 @@ function M.show(hints)
     row = (vim.o.lines - height) / 2 - 2,
     style = 'minimal',
     border = ui_config.border,
-    title = ' Operator Hints ',
+    title = ' Key Memo ',
     title_pos = 'center',
   }
   
@@ -94,9 +94,9 @@ function M.show(hints)
   
   vim.api.nvim_win_set_option(popup_win, 'winhl', 'Normal:Normal,FloatBorder:FloatBorder')
   
-  vim.api.nvim_buf_set_keymap(popup_buf, 'n', '<Esc>', '<cmd>lua require("operator-hint").hide_hints()<CR>', 
+  vim.api.nvim_buf_set_keymap(popup_buf, 'n', '<Esc>', '<cmd>lua require("keymemo").hide_hints()<CR>', 
     { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(popup_buf, 'n', 'q', '<cmd>lua require("operator-hint").hide_hints()<CR>', 
+  vim.api.nvim_buf_set_keymap(popup_buf, 'n', 'q', '<cmd>lua require("keymemo").hide_hints()<CR>', 
     { noremap = true, silent = true })
 end
 

@@ -1,12 +1,12 @@
-![GitHub Release](https://img.shields.io/github/v/release/hamadash/operator-hint.nvim)
+![GitHub Release](https://img.shields.io/github/v/release/hamadash/keymemo.nvim)
 
-# operator-hint.nvim
+# keymemo.nvim
 
-A Neovim plugin that provides which-key style hints for Vim operators to help you remember useful operations.
+A Neovim plugin that provides hints for Vim operators to help you remember useful operations.
 
 ## Features
 
-- 🚀 **which-key style hints**: Shows available operations when you start typing an operator
+- 🚀 **Key memo**: Shows available operations when you start typing an operator
 - ⚙️ **Configurable**: Customize operators and their descriptions
 - 🎯 **LazyNvim compatible**: Works seamlessly with LazyNvim
 - ⏱️ **Smart timing**: Configurable delays and timeouts
@@ -18,11 +18,13 @@ A Neovim plugin that provides which-key style hints for Vim operators to help yo
 
 ```lua
 {
-  "hamadash/operator-hint.nvim",
+  "hamadash/keymemo.nvim",
   event = "VeryLazy",
   config = function()
-    require("operator-hint").setup({
-      -- your configuration here
+    require("keymemo").setup({
+      operators = {
+        -- Define your operators here
+      }
     })
   end,
 }
@@ -32,43 +34,44 @@ A Neovim plugin that provides which-key style hints for Vim operators to help yo
 
 ```lua
 use {
-  "hamadash/operator-hint.nvim",
+  "hamadash/keymemo.nvim",
   config = function()
-    require("operator-hint").setup()
+    require("keymemo").setup({
+      -- your configuration here
+    })
   end
 }
 ```
 
 ## Usage
 
-Once installed and configured, the plugin will automatically show hints when you:
-
-1. Press an operator key (like `d`, `y`, `c`, `g`, `<C-w>`)
-2. Wait for the configured delay (default: 300ms)
-3. See a popup with available operations
-
-Press `<Esc>` or `q` to close the hints manually.
+Use the following commands to display key memo:
 
 ### Commands
 
-- `:OperatorHint` - Manually show operator hints
-- `:OperatorHintToggle` - Toggle operator hints visibility
-- `:OperatorHintHide` - Hide operator hints
+- `:KeyMemo` - Show key memo
+- `:KeyMemoToggle` - Toggle key memo visibility
+- `:KeyMemoHide` - Hide key memo
+
+Press `<Esc>` or `q` to close the memo when it is visible.
 
 ## Configuration
 
-### Default Configuration
+### Configuration
 
 ```lua
-require("operator-hint").setup({
+require("keymemo").setup({
   operators = {
+    -- You must define all operators yourself
     d = {
       name = "Delete",
       mappings = {
         dd = "Delete line",
         dw = "Delete word",
-        d$ = "Delete to end of line",
-        -- ... more mappings
+        ["d$"] = "Delete to end of line",
+        d0 = "Delete to beginning of line",
+        di = "Delete inside",
+        da = "Delete around",
       }
     },
     y = {
@@ -76,45 +79,55 @@ require("operator-hint").setup({
       mappings = {
         yy = "Yank line",
         yw = "Yank word",
-        -- ... more mappings
+        ["y$"] = "Yank to end of line",
+        y0 = "Yank to beginning of line",
+        yi = "Yank inside",
+        ya = "Yank around",
       }
     },
-    -- ... more operators
+    c = {
+      name = "Change",
+      mappings = {
+        cc = "Change line",
+        cw = "Change word",
+        ["c$"] = "Change to end of line",
+        c0 = "Change to beginning of line",
+        ci = "Change inside",
+        ca = "Change around",
+      }
+    },
+    g = {
+      name = "Go",
+      mappings = {
+        gg = "Go to first line",
+        ["G"] = "Go to last line",
+        gf = "Go to file under cursor",
+        gd = "Go to definition",
+        gr = "Go to references",
+        gi = "Go to implementation",
+        gt = "Next tab",
+        gT = "Previous tab",
+      }
+    },
+    ["<C-w>"] = {
+      name = "Window",
+      mappings = {
+        ["<C-w>h"] = "Move to left window",
+        ["<C-w>j"] = "Move to down window",
+        ["<C-w>k"] = "Move to up window",
+        ["<C-w>l"] = "Move to right window",
+        ["<C-w>s"] = "Split window horizontally",
+        ["<C-w>v"] = "Split window vertically",
+        ["<C-w>q"] = "Close window",
+        ["<C-w>w"] = "Switch to next window",
+      }
+    }
   },
-  timeout = 1000,        -- Hide hints after this time (ms)
-  show_delay = 300,      -- Show hints after this delay (ms)
   ui = {
     border = "rounded",  -- Border style
     position = "center", -- Position of the popup
     min_width = 40,      -- Minimum popup width
     max_width = 80,      -- Maximum popup width
-  }
-})
-```
-
-### Adding Custom Operators
-
-```lua
-require("operator-hint").setup({
-  operators = {
-    -- Add your custom operator
-    ["<leader>f"] = {
-      name = "Find",
-      mappings = {
-        ["<leader>ff"] = "Find files",
-        ["<leader>fg"] = "Find in files",
-        ["<leader>fb"] = "Find buffers",
-      }
-    },
-    -- Override default operators
-    d = {
-      name = "Delete",
-      mappings = {
-        dd = "Delete current line",
-        dw = "Delete word under cursor",
-        -- your custom mappings
-      }
-    }
   }
 })
 ```

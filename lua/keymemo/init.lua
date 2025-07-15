@@ -1,8 +1,8 @@
 local M = {}
 
-local config = require('operator-hint.config')
-local ui = require('operator-hint.ui')
-local mappings = require('operator-hint.mappings')
+local config = require('keymemo.config')
+local ui = require('keymemo.ui')
+local mappings = require('keymemo.mappings')
 
 function M.setup(opts)
   config.setup(opts)
