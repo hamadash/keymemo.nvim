@@ -1,7 +1,7 @@
 local M = {}
 
 M.defaults = {
-	operators = {},
+	keys = {},
 	ui = {
 		border = "rounded",
 		position = "center",
@@ -17,13 +17,11 @@ function M.setup(opts)
 end
 
 function M.get_hints()
-	return M.options.operators
+	return M.options.keys
 end
-
 
 function M.get_ui_config()
 	return M.options.ui
 end
 
 return M
-

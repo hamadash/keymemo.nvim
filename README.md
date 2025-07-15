@@ -2,12 +2,11 @@
 
 # keymemo.nvim
 
-A Neovim plugin that provides hints for Vim operators to help you remember useful operations.
+A Neovim plugin that provides memo for Vim keys to help you remember useful keys.
 
 ## Features
 
-- 🚀 **Key memo**: Shows available operations when you start typing an operator
-- ⚙️ **Configurable**: Customize operators and their descriptions
+- ⚙️ **Configurable**: Customize keys and their descriptions
 - 🎯 **LazyNvim compatible**: Works seamlessly with LazyNvim
 - ⏱️ **Smart timing**: Configurable delays and timeouts
 - 🎨 **Clean UI**: Floating window with customizable appearance
@@ -22,8 +21,8 @@ A Neovim plugin that provides hints for Vim operators to help you remember usefu
   event = "VeryLazy",
   config = function()
     require("keymemo").setup({
-      operators = {
-        -- Define your operators here
+      keys = {
+        -- Define your keys here
       }
     })
   end,
@@ -61,8 +60,8 @@ Press `<Esc>` or `q` to close the memo when it is visible.
 
 ```lua
 require("keymemo").setup({
-  operators = {
-    -- You must define all operators yourself
+  keys = {
+    -- You must define all keys yourself
     d = {
       name = "Delete",
       mappings = {
