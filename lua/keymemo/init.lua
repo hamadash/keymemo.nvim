@@ -1,30 +1,31 @@
 local M = {}
 
-local config = require('keymemo.config')
-local ui = require('keymemo.ui')
-local mappings = require('keymemo.mappings')
+local config = require("keymemo.config")
+local ui = require("keymemo.ui")
+local mappings = require("keymemo.mappings")
 
 function M.setup(opts)
-  config.setup(opts)
-  mappings.setup_mappings()
+	config.setup(opts)
+	mappings.setup_mappings()
 end
 
-function M.show_hints()
-  local hints = config.get_hints()
-  ui.show(hints)
+function M.show_memo_list()
+	local memo_list = config.get_memo_list()
+	ui.show(memo_list)
 end
 
-function M.hide_hints()
-  ui.hide()
-  mappings.reset()
+function M.hide_memo_list()
+	ui.hide()
+	mappings.reset()
 end
 
-function M.toggle_hints()
-  if ui.is_visible() then
-    M.hide_hints()
-  else
-    M.show_hints()
-  end
+function M.toggle_memo_list()
+	if ui.is_visible() then
+		M.hide_memo_list()
+	else
+		M.show_memo_list()
+	end
 end
 
 return M
+
