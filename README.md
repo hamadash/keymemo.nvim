@@ -1,4 +1,4 @@
-<a href="https://github.com/hamadash/operator-hint.nvim/releases/latest"><img src="https://img.shields.io/github/release/hamadash/operator-hint.nvim.svg" /></a>
+![GitHub Release](https://img.shields.io/github/v/release/hamadash/operator-hint.nvim)
 
 # operator-hint.nvim
 
