@@ -16,11 +16,11 @@ local function close_popup()
 	popup_buf = nil
 end
 
-local function format_memo_list(memo_list)
+local function format_memos(memos)
 	local lines = {}
 	local max_key_width = 0
 
-	for key, memo in pairs(memo_list) do
+	for key, memo in pairs(memos) do
 		if memo.mappings then
 			for mapping, desc in pairs(memo.mappings) do
 				max_key_width = math.max(max_key_width, #mapping)
@@ -28,7 +28,7 @@ local function format_memo_list(memo_list)
 		end
 	end
 
-	for key, memo in pairs(memo_list) do
+	for key, memo in pairs(memos) do
 		if memo.mappings then
 			table.insert(lines, string.format(" %s - %s ", key, memo.name))
 			table.insert(lines, string.rep("─", #lines[#lines] + 10))
@@ -62,10 +62,10 @@ local function calculate_popup_size(lines)
 	return width, height
 end
 
-function M.show(memo_list)
+function M.show(memos)
 	M.hide()
 
-	local lines = format_memo_list(memo_list)
+	local lines = format_memos(memos)
 	if #lines == 0 then
 		return
 	end
@@ -98,14 +98,14 @@ function M.show(memo_list)
 		popup_buf,
 		"n",
 		"<Esc>",
-		'<cmd>lua require("keymemo").hide_memo_list()<CR>',
+		'<cmd>lua require("keymemo").hide_memos()<CR>',
 		{ noremap = true, silent = true }
 	)
 	vim.api.nvim_buf_set_keymap(
 		popup_buf,
 		"n",
 		"q",
-		'<cmd>lua require("keymemo").hide_memo_list()<CR>',
+		'<cmd>lua require("keymemo").hide_memos()<CR>',
 		{ noremap = true, silent = true }
 	)
 end
@@ -119,4 +119,3 @@ function M.is_visible()
 end
 
 return M
-

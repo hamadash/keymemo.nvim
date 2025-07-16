@@ -16,7 +16,7 @@ function M.setup(opts)
 	M.options = vim.tbl_deep_extend("force", M.defaults, opts or {})
 end
 
-function M.get_memo_list()
+function M.get_memos()
 	return M.options.keys
 end
 

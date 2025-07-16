@@ -9,23 +9,22 @@ function M.setup(opts)
 	mappings.setup_mappings()
 end
 
-function M.show_memo_list()
-	local memo_list = config.get_memo_list()
-	ui.show(memo_list)
+function M.show_memos()
+	local memos = config.get_memos()
+	ui.show(memos)
 end
 
-function M.hide_memo_list()
+function M.hide_memos()
 	ui.hide()
 	mappings.reset()
 end
 
-function M.toggle_memo_list()
+function M.toggle_memos()
 	if ui.is_visible() then
-		M.hide_memo_list()
+		M.hide_memos()
 	else
-		M.show_memo_list()
+		M.show_memos()
 	end
 end
 
 return M
-
